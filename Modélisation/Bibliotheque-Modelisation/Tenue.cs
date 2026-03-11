@@ -65,7 +65,7 @@ namespace Bibliotheque_Modelisation
 
             for (int i = 0; i < Vetements.Count; i++)
             {
-                if (Vetements[i].Type == Type.haut)
+                if (Vetements[i].Type == Type.HAUT)
                 {
                     haut = true;
                 }
@@ -73,7 +73,7 @@ namespace Bibliotheque_Modelisation
 
             for (int i = 0; i < Vetements.Count; i++)
             {
-                if (Vetements[i].Type == Type.bas)
+                if (Vetements[i].Type == Type.BAS)
                 { 
                     bas = true;
                 }
@@ -81,7 +81,7 @@ namespace Bibliotheque_Modelisation
 
             for (int i = 0; i < Vetements.Count; i++)
             {
-                if (Vetements[i].Type == Type.chaussure)
+                if (Vetements[i].Type == Type.CHAUSSURE)
                 {
                     chaussure = true;
                 }

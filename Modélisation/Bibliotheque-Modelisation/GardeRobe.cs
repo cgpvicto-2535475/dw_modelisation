@@ -22,7 +22,10 @@ namespace Bibliotheque_Modelisation
         /// Constructeur du garde-robe, avec tous les vêtements,
         /// </summary>
         /// <param name="vetements">la liste de vêtements</param>
-        public GardeRobe(List<Vetement> vetements, int nombreHauts, int nombreBas, int nombreChaussures, int nombreVestes, int nombreAcccessoires)
+        public GardeRobe(
+            List<Vetement> vetements, int nombreHauts, int nombreBas, 
+            int nombreChaussures, int nombreVestes, int nombreAcccessoires
+            )
         {
             Vetements = vetements;
         }
@@ -77,7 +80,7 @@ namespace Bibliotheque_Modelisation
             get => _nombreHauts;
             private set
             {
-                value = CompterInventaire(Type.haut);
+                value = CompterInventaire(Type.HAUT);
                 _nombreHauts = value;
             }
         }
@@ -90,7 +93,7 @@ namespace Bibliotheque_Modelisation
             get => _nombreBas;
             private set 
             {
-                value = CompterInventaire(Type.bas);
+                value = CompterInventaire(Type.BAS);
                 _nombreBas = value;
             }
         }
@@ -102,7 +105,7 @@ namespace Bibliotheque_Modelisation
             get => _nombreChaussures;
             private set 
             {
-                value = CompterInventaire(Type.chaussure);
+                value = CompterInventaire(Type.CHAUSSURE);
                 _nombreChaussures = value; 
             }
         }
@@ -115,7 +118,7 @@ namespace Bibliotheque_Modelisation
             get => _nombreVestes;
             private set
             {
-                value = CompterInventaire(Type.veste);
+                value = CompterInventaire(Type.VESTE);
                 _nombreVestes = value;
             }
         }
@@ -128,7 +131,7 @@ namespace Bibliotheque_Modelisation
             get => _nombreAcccessoires;
             private set
             {
-                value = CompterInventaire(Type.accessoire);
+                value = CompterInventaire(Type.ACCESSOIRE);
                 _nombreAcccessoires = value;
             }
         }
