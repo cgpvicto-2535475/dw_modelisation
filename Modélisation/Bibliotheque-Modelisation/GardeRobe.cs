@@ -12,25 +12,20 @@ namespace Bibliotheque_Modelisation
     public class GardeRobe
     {
         private List<Vetement> _vetements;
-        private int _nombreHauts;
-        private int _nombreBas;
-        private int _nombreChaussures;
-        private int _nombreVestes;
-        private int _nombreAcccessoires;
+        //private int _nombreHauts;
+        //private int _nombreBas;
+        //private int _nombreChaussures;
+        //private int _nombreVestes;
+        //private int _nombreAcccessoires;
 
         /// <summary>
         /// Constructeur du garde-robe, avec tous les vêtements,
         /// </summary>
         /// <param name="vetements">la liste de vêtements</param>
-        public GardeRobe(
-            List<Vetement> vetements, int nombreHauts, int nombreBas, 
-            int nombreChaussures, int nombreVestes, int nombreAcccessoires
-            )
+        public GardeRobe( List<Vetement> vetements )
         {
             Vetements = vetements;
         }
-
-        
 
         /// <summary>
         /// Cette méthode ajoute un vêtement au gardde-robe
@@ -50,14 +45,15 @@ namespace Bibliotheque_Modelisation
         public int CompterInventaire(Type type)
         {
             int inventaire = 0;
+
             for (int i = 0; i < Vetements.Count; i++)
             {
-               
                 if (Vetements[i].Type == type)
                 {
                     inventaire++;
                 }
             }
+
             return inventaire;
         }
         /// <summary>
@@ -69,70 +65,6 @@ namespace Bibliotheque_Modelisation
             private set
             {
                 _vetements = value;
-            }
-        }
-        
-        /// <summary>
-        /// Constructeur du nombre de hauts
-        /// </summary>
-        public int NombreHauts 
-        { 
-            get => _nombreHauts;
-            private set
-            {
-                value = CompterInventaire(Type.HAUT);
-                _nombreHauts = value;
-            }
-        }
-
-        /// <summary>
-        /// Constructeur du nombre de bas
-        /// </summary>
-        public int NombreBas 
-        { 
-            get => _nombreBas;
-            private set 
-            {
-                value = CompterInventaire(Type.BAS);
-                _nombreBas = value;
-            }
-        }
-        /// <summary>
-        /// Constructeur du nombre de chaussures, calculé dynamiquement avec la fonction CompterInventaire
-        /// </summary>
-        public int NombreChaussures 
-        { 
-            get => _nombreChaussures;
-            private set 
-            {
-                value = CompterInventaire(Type.CHAUSSURE);
-                _nombreChaussures = value; 
-            }
-        }
-
-        /// <summary>
-        /// Constructeur du nombre de vestes, calculé dynamiquement avec la fonction CompterInventaire
-        /// </summary>
-        public int NombreVestes 
-        { 
-            get => _nombreVestes;
-            private set
-            {
-                value = CompterInventaire(Type.VESTE);
-                _nombreVestes = value;
-            }
-        }
-
-        /// <summary>
-        /// Constructeur du nombre d'accessoires, calculé dynamiquement avec la fonction CompterInventaire
-        /// </summary>
-        public int NombreAcccessoires 
-        {
-            get => _nombreAcccessoires;
-            private set
-            {
-                value = CompterInventaire(Type.ACCESSOIRE);
-                _nombreAcccessoires = value;
             }
         }
     }

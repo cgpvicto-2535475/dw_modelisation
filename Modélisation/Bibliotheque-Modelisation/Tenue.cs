@@ -12,28 +12,38 @@ namespace Bibliotheque_Modelisation
         private List<Vetement> _vetements;
         private int _score;
 
+        /// <summary>
+        /// TODO faire le summary
+        /// </summary>
+        /// <param name="vetements"></param>
+        /// <exception cref="Exception"></exception>
         public Tenue(List<Vetement> vetements)
-        {
-            Vetements = vetements;
-            if (ValiderTenue())
-                Score = CalculerScore();
-            else
+        { 
+            //on vérifie si il y a du papier toilette
+            if (!ValiderTenue())
+            {
+                //sinon je ne commence pas la job
                 throw new Exception("Vos vêtements ne constitue pas une tenue");
+            }
+
+            Vetements = vetements;
+            Score = CalculerScore();
         }
-        
-        
+
         /// <summary>
         /// Cette méthode calcule le score d'une tenue
+        /// On fait toute les paires possible de vêtement.
+        /// pour chacune des paires :
+        /// si la paire de vetements sont de la meme saison on donne un score de +1
+        /// si la paire de vetements sont de la meme catégorie on donne un score de +1
         /// </summary>
-        /// <returns></returns>
+        /// <returns>On retourne le total de toute les combinaisons</returns>
         private int CalculerScore()
         {
             int score = 0;
-            
+
             for (int i = 0; i < Vetements.Count; i++)
             {
-                
-                
                 Categorie categorie = Vetements[i].Categorie;
 
                 for (int j = i + 1; j < Vetements.Count - 1; j++)
@@ -47,7 +57,6 @@ namespace Bibliotheque_Modelisation
                         score += 1;
                     }
                 }
-                
             }
             return score;
         }
@@ -74,7 +83,7 @@ namespace Bibliotheque_Modelisation
             for (int i = 0; i < Vetements.Count; i++)
             {
                 if (Vetements[i].Type == Type.BAS)
-                { 
+                {
                     bas = true;
                 }
             }
@@ -96,15 +105,15 @@ namespace Bibliotheque_Modelisation
         /// <summary>
         /// Accesseur de vêtement
         /// </summary>
-        public List<Vetement> Vetements 
+        private List<Vetement> Vetements
         {
             get => _vetements;
-            private set
+            set
             {
-               
                 _vetements = value;
             }
         }
+
         /// <summary>
         /// Accesseur du score
         /// </summary>
@@ -117,7 +126,5 @@ namespace Bibliotheque_Modelisation
                 _score = value;
             }
         }
-
-        
     }
 }
