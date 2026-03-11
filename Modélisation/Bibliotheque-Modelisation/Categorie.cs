@@ -9,10 +9,10 @@ namespace Bibliotheque_Modelisation
     /// </summary>
     public enum Categorie
     {
-        casual,
-        formel,
-        street,
-        sportif,
-        minimaliste
+        CASUAL,
+        FORMEL,
+        STREET,
+        SPORTIF,
+        MINIMALISTE
     }
 }

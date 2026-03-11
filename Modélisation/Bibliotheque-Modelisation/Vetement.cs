@@ -19,7 +19,7 @@ namespace Bibliotheque_Modelisation
         private Saison _saison;
         private string _nom;
         private string _couleur;
-        private int _niveauFormalite;
+        // private int _niveauFormalite;
 
 
 
@@ -38,12 +38,13 @@ namespace Bibliotheque_Modelisation
             Saison = saison;
             Nom = nom;
             Couleur = couleur;
+        
         }
 
         /// <summary>
         /// Méthode d'affichage de vêtement
         /// </summary>
-        /// <returns></returns>
+        /// <returns>le vêtement en string</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -76,7 +77,7 @@ namespace Bibliotheque_Modelisation
             return false;
         } 
         /// <summary>
-        /// Constructeur de la saison d'un vêtement
+        /// Accesseur de la saison d'un vêtement
         /// </summary>
         public Saison Saison 
         { 
@@ -90,7 +91,7 @@ namespace Bibliotheque_Modelisation
         
 
         /// <summary>
-        /// Constructeur du nom du vêtement
+        /// Accesseur du nom du vêtement
         /// </summary>
         public string Nom 
         { 
@@ -105,7 +106,7 @@ namespace Bibliotheque_Modelisation
         }
 
         /// <summary>
-        /// Constructeur de la couleur
+        /// Accessuer de la couleur
         /// </summary>
         public string Couleur 
         {
@@ -119,30 +120,39 @@ namespace Bibliotheque_Modelisation
             }
         }
         /// <summary>
-        /// Constructeur pour le niveau de formalité
+        /// Accesseur pour le niveau de formalité,
+        /// selon la catégorie du vêtement, on lui donne une note entre 1 et 5 dans le private set
+        /// (
         /// </summary>
         public int NiveauFormalite
         {
-            get => _niveauFormalite;
-            private set
-            {
-                ArgumentOutOfRangeException.ThrowIfLessThan(value, 1, "Le niveau de formalité ne peut pas être inférieur à 1");
-                ArgumentOutOfRangeException.ThrowIfGreaterThan(value, 5, "Le niveau de formalité ne peut pas être supérieur à 5");
-                if (Categorie.Equals(0))
-                    value = 1;
-                if (Categorie.Equals(1))
-                    value = 5;
-                if (Categorie.Equals(2))
-                    value = 2;
-                if (Categorie.Equals(3))
-                    value = 1;
-                if (Categorie.Equals(4))
-                    value = 3;
-                _niveauFormalite = value;
-            }
+            get => CalculerNiveauFormalite();
+
         }
+
         /// <summary>
-        /// Constructeur de catégorie
+        /// Pour chacune des categories on a un niveau de formalite associé.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private int CalculerNiveauFormalite()
+        {
+            int value = 0;
+            if (Categorie == Categorie.CASUAL)
+                value = 1;
+            if (Categorie == Categorie.FORMEL)
+                value = 5;
+            if (Categorie == Categorie.STREET)
+                value = 2;
+            if (Categorie == Categorie.SPORTIF)
+                value = 1;
+            if (Categorie == Categorie.MINIMALISTE)
+                value = 3;
+            return value;
+        }
+
+        /// <summary>
+        /// Accesseur de catégorie
         /// </summary>
         public Categorie Categorie
         {
@@ -154,7 +164,7 @@ namespace Bibliotheque_Modelisation
         }
 
         /// <summary>
-        /// Constructeur du type
+        /// Accesseur du type
         /// </summary>
         public Type Type 
         { 
@@ -162,6 +172,7 @@ namespace Bibliotheque_Modelisation
             private set
             {
                 _type = value;
+                
             }
         }
     }

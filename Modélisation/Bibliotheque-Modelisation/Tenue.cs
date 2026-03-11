@@ -19,24 +19,25 @@ namespace Bibliotheque_Modelisation
                 Score = CalculerScore();
             else
                 throw new Exception("Vos vêtements ne constitue pas une tenue");
+
         }
         
         
         /// <summary>
         /// Cette méthode calcule le score d'une tenue
+        /// Elle effectue toutes les paires possible de vêtement
+        /// pour chacune des paires :
+        /// si la paire de vetements sont de la meme saison, on donne un score de +1 
+        /// si la paire de vetements sont de la meme catégorie, ondonne un score de =1
         /// </summary>
-        /// <returns></returns>
+        /// <returns>le score obtenu</returns>
         private int CalculerScore()
         {
             int score = 0;
             
             for (int i = 0; i < Vetements.Count; i++)
             {
-                
-                
-                Categorie categorie = Vetements[i].Categorie;
-
-                for (int j = i + 1; j < Vetements.Count - 1; j++)
+                for (int j = i + 1; j < Vetements.Count - i; j++)
                 {
                     if (Vetements[i].Saison == Vetements[j].Saison)
                     {
@@ -53,7 +54,8 @@ namespace Bibliotheque_Modelisation
         }
 
         /// <summary>
-        /// Cette méthode permet de valider si une tenue est adéquate
+        /// Cette méthode permet de valider si une tenue est adéquate,
+        /// Elle vérifie chaque vêtement dans une tenue
         /// </summary>
         /// <returns>Vrai si la tenue est valide, faux sinon</returns>
         private bool ValiderTenue()
@@ -65,7 +67,7 @@ namespace Bibliotheque_Modelisation
 
             for (int i = 0; i < Vetements.Count; i++)
             {
-                if (Vetements[i].Type == Type.haut)
+                if (Vetements[i].Type == Type.HAUT)
                 {
                     haut = true;
                 }
@@ -73,7 +75,7 @@ namespace Bibliotheque_Modelisation
 
             for (int i = 0; i < Vetements.Count; i++)
             {
-                if (Vetements[i].Type == Type.bas)
+                if (Vetements[i].Type == Type.BAS)
                 { 
                     bas = true;
                 }
@@ -81,7 +83,7 @@ namespace Bibliotheque_Modelisation
 
             for (int i = 0; i < Vetements.Count; i++)
             {
-                if (Vetements[i].Type == Type.chaussure)
+                if (Vetements[i].Type == Type.CHAUSSURE)
                 {
                     chaussure = true;
                 }
@@ -96,13 +98,18 @@ namespace Bibliotheque_Modelisation
         /// <summary>
         /// Accesseur de vêtement
         /// </summary>
-        public List<Vetement> Vetements 
+        private List<Vetement> Vetements 
         {
             get => _vetements;
-            private set
+            set
             {
-               
-                _vetements = value;
+                if (!ValiderTenue())
+                    throw new ArgumentException("Vos vêtements ne constituent pas une tenue");
+                else
+                {
+                    _vetements = value; 
+                    Score = CalculerScore();
+                }
             }
         }
         /// <summary>

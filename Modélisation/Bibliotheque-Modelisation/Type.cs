@@ -9,10 +9,10 @@ namespace Bibliotheque_Modelisation
     /// </summary>
     public enum Type
     {
-        haut,
-        bas,
-        chaussure,
-        veste,
-        accessoire
+        HAUT,
+        BAS,
+        CHAUSSURE,
+        VESTE,
+        ACCESSOIRE
     }
 }

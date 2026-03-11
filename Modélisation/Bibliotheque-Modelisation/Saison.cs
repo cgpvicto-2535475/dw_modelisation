@@ -9,9 +9,9 @@ namespace Bibliotheque_Modelisation
     /// </summary>
     public enum Saison
     {
-        hiver,
-        printemps,
-        été,
-        automne
+        HIVER,
+        PRINTEMPS,
+        ETE,
+        AUTOMNE
     }
 }
