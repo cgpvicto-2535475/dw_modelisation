@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Bibliotheque_Modelisation
 {
-    internal enum Categorie
+    /// <summary>
+    /// Enum des catégories possibles d'un vêtement
+    /// </summary>
+    public enum Categorie
     {
         casual,
         formel,

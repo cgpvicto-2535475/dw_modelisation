@@ -4,7 +4,14 @@ using System.Text;
 
 namespace Bibliotheque_Modelisation
 {
-    internal class Saison
+    /// <summary>
+    /// Enum de la saison d'un vêtement, il peut être hiver, printemps, été ou automne
+    /// </summary>
+    public enum Saison
     {
+        hiver,
+        printemps,
+        été,
+        automne
     }
 }

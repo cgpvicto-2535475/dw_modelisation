@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="ApplicationConsole/ApplicationConsole.csproj" />
+  <Project Path="Bibliotheque-Modelisation/Bibliotheque-Modelisation.csproj" />
 </Solution>

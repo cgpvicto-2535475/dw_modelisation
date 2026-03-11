@@ -4,7 +4,15 @@ using System.Text;
 
 namespace Bibliotheque_Modelisation
 {
-    internal class Type
+    /// <summary>
+    /// Enum des types possibles d'un vêtement
+    /// </summary>
+    public enum Type
     {
+        haut,
+        bas,
+        chaussure,
+        veste,
+        accessoire
     }
 }
