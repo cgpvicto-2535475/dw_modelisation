@@ -12,34 +12,22 @@ namespace Bibliotheque_Modelisation
     public class GardeRobe
     {
         private List<Vetement> _vetements;
+        //private int _nombreHauts;
+        //private int _nombreBas;
+        //private int _nombreChaussures;
+        //private int _nombreVestes;
+        //private int _nombreAcccessoires;
 
         /// <summary>
         /// Constructeur du garde-robe, avec tous les vêtements,
         /// </summary>
         /// <param name="vetements">la liste de vêtements</param>
-        public GardeRobe(List<Vetement> vetements)
+        public GardeRobe( List<Vetement> vetements )
         {
             Vetements = vetements;
         }
 
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("========Garde-Robe=======");
-
-            for (int i = 0; i < Vetements.Count; i++)
-            {
-                sb.AppendLine(Vetements[i].ToString());
-            }
-            sb.AppendLine($"Nombre de hauts : {NombreHauts}");
-            sb.AppendLine($"Nombre de bas : {NombreBas}");
-            sb.AppendLine($"Nombre de chaussures : {NombreChaussures}");
-            sb.AppendLine($"Nombre de vestes : {NombreVestes}");
-            sb.AppendLine($"Nombre d'accessoires :{NombreAcccessoires}");
-            sb.AppendLine($"========================");
-
-            return base.ToString();
-        }
+        
 
         /// <summary>
         /// Cette méthode ajoute un vêtement au gardde-robe
@@ -75,14 +63,15 @@ namespace Bibliotheque_Modelisation
         public int CompterInventaire(Type type)
         {
             int inventaire = 0;
+
             for (int i = 0; i < Vetements.Count; i++)
             {
-               
                 if (Vetements[i].Type == type)
                 {
                     inventaire++;
                 }
             }
+
             return inventaire;
         }
         /// <summary>
@@ -95,46 +84,6 @@ namespace Bibliotheque_Modelisation
             {
                 _vetements = value;
             }
-        }
-        
-        /// <summary>
-        /// Accesseur du nombre de hauts, calculé dynamiquement avec la fonction CompterInventaire
-        /// </summary>
-        public int NombreHauts 
-        { 
-            get => CompterInventaire(Type.HAUT);
-        }
-
-        /// <summary>
-        /// Accesseur du nombre de bas, calculé dynamiquement avec la fonction CompterInventaire
-        /// </summary>
-        public int NombreBas 
-        {
-            get => CompterInventaire(Type.BAS);
-        }
-        /// <summary>
-        /// Accesseur du nombre de chaussures, calculé dynamiquement avec la fonction CompterInventaire
-        /// </summary>
-        public int NombreChaussures 
-        { 
-            get => CompterInventaire(Type.CHAUSSURE);
-        }
-
-        /// <summary>
-        /// Accesseur du nombre de vestes, calculé dynamiquement avec la fonction CompterInventaire
-        /// </summary>
-        public int NombreVestes 
-        { 
-            get => CompterInventaire(Type.VESTE);
-           
-        }
-
-        /// <summary>
-        /// Accesseur du nombre d'accessoires, calculé dynamiquement avec la fonction CompterInventaire
-        /// </summary>
-        public int NombreAcccessoires 
-        {
-            get => CompterInventaire(Type.ACCESSOIRE);
         }
     }
 }

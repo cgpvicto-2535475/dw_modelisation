@@ -21,8 +21,6 @@ namespace Bibliotheque_Modelisation
         private string _couleur;
         // private int _niveauFormalite;
 
-
-
         /// <summary>
         /// Constructeur d'un vêtement 
         /// </summary>
@@ -39,6 +37,27 @@ namespace Bibliotheque_Modelisation
             Nom = nom;
             Couleur = couleur;
         
+        }
+
+        /// <summary>
+        /// Pour chacune des catégorie on a un niveau de formalité associé.
+        /// </summary>
+        /// <param name="value">le </param>
+        /// <returns></returns>
+        private int CalculerNiveauFormalite()
+        {
+            int value = 0;
+            if (Categorie is Categorie.CASUAL)
+                value = 1;
+            if (Categorie is Categorie.FORMEL)
+                value = 5;
+            if (Categorie is Categorie.STREET)
+                value = 2;
+            if (Categorie is Categorie.SPORTIF)
+                value = 1;
+            if (Categorie is Categorie.MINIMALISTE)
+                value = 3;
+            return value;
         }
 
         /// <summary>
@@ -72,10 +91,11 @@ namespace Bibliotheque_Modelisation
                 {
                     return true;
                 }
-               
             }
+
             return false;
         } 
+
         /// <summary>
         /// Accesseur de la saison d'un vêtement
         /// </summary>
@@ -99,8 +119,10 @@ namespace Bibliotheque_Modelisation
             private set
             {
                 ArgumentException.ThrowIfNullOrEmpty(value, "Votre nom ne peut pas être vide ou être null");
+                
                 if (ContientNombre(value))
                     throw new ArgumentException("Votre nom ne peut pas contenir de nombre");
+
                 _nom = value;
             }
         }
@@ -114,8 +136,10 @@ namespace Bibliotheque_Modelisation
             private set
             {
                 ArgumentException.ThrowIfNullOrEmpty(value, "Votre couleur ne peut pas être vide ou être null");
+
                 if (ContientNombre(value))
                     throw new ArgumentException("Votre couleur ne peut pas contenir de nombre");
+
                 _couleur = value;
             }
         }
@@ -127,29 +151,8 @@ namespace Bibliotheque_Modelisation
         public int NiveauFormalite
         {
             get => CalculerNiveauFormalite();
-
         }
 
-        /// <summary>
-        /// Pour chacune des categories on a un niveau de formalite associé.
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        private int CalculerNiveauFormalite()
-        {
-            int value = 0;
-            if (Categorie == Categorie.CASUAL)
-                value = 1;
-            if (Categorie == Categorie.FORMEL)
-                value = 5;
-            if (Categorie == Categorie.STREET)
-                value = 2;
-            if (Categorie == Categorie.SPORTIF)
-                value = 1;
-            if (Categorie == Categorie.MINIMALISTE)
-                value = 3;
-            return value;
-        }
 
         /// <summary>
         /// Accesseur de catégorie
